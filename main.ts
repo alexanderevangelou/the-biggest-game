@@ -383,6 +383,6 @@ forever(function () {
         music.play(music.stringPlayable("C5 B C5 A C5 B C5 G ", 120), music.PlaybackMode.UntilDone)
     }
     for (let index = 0; index < 2; index++) {
-        music.play(music.stringPlayable("C5 A C5 B C5 G C5 B ", 120), music.PlaybackMode.UntilDone)
+        music.play(music.stringPlayable("C5 G C5 G B A C5 A ", 120), music.PlaybackMode.UntilDone)
     }
 })
