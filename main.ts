@@ -186,10 +186,30 @@ blockMenu.onMenuOptionSelected(function (option, index) {
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
     if (Level_Editor_) {
         if (controller.right.isPressed()) {
-        	
+            mySprite = sprites.create(img`
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 
+                `, SpriteKind.Player)
+            mySprite.setPosition(Level_Editor_Cursor.x, Level_Editor_Cursor.y)
+            sprites.destroy(Level_Editor_Cursor)
         }
     }
 })
+let mySprite: Sprite = null
 let Level_Editor_ = false
 let Level_Editor_Cursor: Sprite = null
 let textSprite: TextSprite = null
