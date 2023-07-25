@@ -183,6 +183,13 @@ blockMenu.onMenuOptionSelected(function (option, index) {
         Level_Editor()
     }
 })
+controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
+    if (Level_Editor_) {
+        if (controller.right.isPressed()) {
+        	
+        }
+    }
+})
 let Level_Editor_ = false
 let Level_Editor_Cursor: Sprite = null
 let textSprite: TextSprite = null
