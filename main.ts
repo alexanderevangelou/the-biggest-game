@@ -171,10 +171,12 @@ function Call_Menu () {
     "Play",
     "Level Editor",
     "Co-Op",
-    "Options",
+    "Settings",
     "Shop",
     "Controls",
     "Credits",
+    "Endless Play",
+    "PvP",
     "Quit"
     ], MenuStyle.Grid, MenuLocation.BottomHalf)
     blockMenu.setColors(2, 15)
