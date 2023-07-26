@@ -345,7 +345,7 @@ blockMenu.onMenuOptionSelected(function (option, index) {
         sprites.destroy(textSprite)
         blockMenu.closeMenu()
         // If editing add name here
-        game.showLongText("Alex: programer", DialogLayout.Center)
+        game.showLongText("Alex: Programer, Game tester and bug fixer", DialogLayout.Center)
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
