@@ -13,24 +13,28 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!(tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile`) || tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile0`))) {
-        if (Level_Editor_) {
-            tiles.setTileAt(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile0`)
+    if (Level_Editor_) {
+        if (!(tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile`) || tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile0`))) {
+            if (Level_Editor_) {
+                tiles.setTileAt(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile0`)
+            }
+        } else {
+            tiles.setWallAt(tiles.locationOfSprite(Level_Editor_Cursor), false)
+            tiles.setTileAt(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`transparency16`)
         }
-    } else {
-        tiles.setWallAt(tiles.locationOfSprite(Level_Editor_Cursor), false)
-        tiles.setTileAt(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`transparency16`)
     }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (!(tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile`) || tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile0`))) {
-        if (Level_Editor_) {
-            tiles.setTileAt(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile`)
-            tiles.setWallAt(tiles.locationOfSprite(Level_Editor_Cursor), true)
+    if (Level_Editor_) {
+        if (!(tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile`) || tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile0`))) {
+            if (Level_Editor_) {
+                tiles.setTileAt(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile`)
+                tiles.setWallAt(tiles.locationOfSprite(Level_Editor_Cursor), true)
+            }
+        } else {
+            tiles.setWallAt(tiles.locationOfSprite(Level_Editor_Cursor), false)
+            tiles.setTileAt(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`transparency16`)
         }
-    } else {
-        tiles.setWallAt(tiles.locationOfSprite(Level_Editor_Cursor), false)
-        tiles.setTileAt(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`transparency16`)
     }
 })
 function Call_Menu () {
@@ -334,6 +338,14 @@ function Level_Editor () {
 blockMenu.onMenuOptionSelected(function (option, index) {
     if (option == "Level Editor") {
         Level_Editor()
+    } else if (option == "Quit") {
+        blockMenu.closeMenu()
+        sprites.destroy(textSprite)
+    } else if (option == "Credits") {
+        sprites.destroy(textSprite)
+        blockMenu.closeMenu()
+        // If editing add name here
+        game.showLongText("Alex: programer", DialogLayout.Center)
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
@@ -368,21 +380,20 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
             mySprite.setPosition(Level_Editor_Cursor.x, Level_Editor_Cursor.y)
             sprites.destroy(Level_Editor_Cursor)
         }
-    } else {
-    	
     }
 })
 let textSprite: TextSprite = null
-let Level_Editor_ = false
 let Level_Editor_Cursor: Sprite = null
+let Level_Editor_ = false
 let mySprite: Sprite = null
 let Level_Editor_2 = false
+let Music_Speed = 120
 Call_Menu()
 forever(function () {
     for (let index = 0; index < 2; index++) {
-        music.play(music.stringPlayable("C5 B C5 A C5 B C5 G ", 120), music.PlaybackMode.UntilDone)
+        music.play(music.stringPlayable("C5 B C5 A C5 B C5 G ", Music_Speed), music.PlaybackMode.UntilDone)
     }
     for (let index = 0; index < 2; index++) {
-        music.play(music.stringPlayable("C G D B C5 E C5 F ", 120), music.PlaybackMode.UntilDone)
+        music.play(music.stringPlayable("C G D B C5 E C5 F ", Music_Speed), music.PlaybackMode.UntilDone)
     }
 })
