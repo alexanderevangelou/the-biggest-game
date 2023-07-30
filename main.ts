@@ -49,6 +49,7 @@ function Settings () {
     "" + Music_Speed,
     "Reset",
     "Menu Theme",
+    "",
     "" + random
     ], MenuStyle.Grid, MenuLocation.BottomHalf)
     blockMenu.setColors(15, 1)
@@ -196,7 +197,6 @@ function Call_Menu () {
     "PvP",
     "Quit"
     ], MenuStyle.Grid, MenuLocation.BottomHalf)
-    random = "Red"
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Level_Editor_) {
@@ -371,9 +371,11 @@ blockMenu.onMenuOptionSelected(function (option, index) {
         // If editing add name here
         game.showLongText("Alex: Programer, Game tester and bug fixer", DialogLayout.Center)
     } else if (option == "Settings") {
+        settings2 = true
         sprites.destroy(textSprite)
         Settings()
     } else if (option == "Quit Settings") {
+        settings2 = false
         blockMenu.closeMenu()
         blockMenu.setControlsEnabled(false)
         Call_Menu()
@@ -401,6 +403,9 @@ blockMenu.onMenuOptionSelected(function (option, index) {
         } else if (random == "Teal") {
             random = "Red"
         }
+        blockMenu.closeMenu()
+        blockMenu.setControlsEnabled(false)
+        Settings()
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
@@ -437,13 +442,15 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
         }
     }
 })
-let random = ""
+let settings2 = false
 let textSprite: TextSprite = null
 let Level_Editor_Cursor: Sprite = null
 let Level_Editor_ = false
 let mySprite: Sprite = null
 let Level_Editor_2 = false
 let Music_Speed = 0
+let random = ""
+random = "Red"
 Music_Speed = 120
 Call_Menu()
 forever(function () {
@@ -455,15 +462,17 @@ forever(function () {
     }
 })
 forever(function () {
-    if (random == "Red") {
-        blockMenu.setColors(2, 15)
-    } else if (random == "Blue") {
-        blockMenu.setColors(8, 15)
-    } else if (random == "Green") {
-        blockMenu.setColors(7, 15)
-    } else if (random == "Yellow") {
-        blockMenu.setColors(5, 15)
-    } else if (random == "Teal") {
-        blockMenu.setColors(6, 15)
+    if (!(settings2)) {
+        if (random == "Red") {
+            blockMenu.setColors(2, 15)
+        } else if (random == "Blue") {
+            blockMenu.setColors(8, 15)
+        } else if (random == "Green") {
+            blockMenu.setColors(7, 15)
+        } else if (random == "Yellow") {
+            blockMenu.setColors(5, 15)
+        } else if (random == "Teal") {
+            blockMenu.setColors(6, 15)
+        }
     }
 })
