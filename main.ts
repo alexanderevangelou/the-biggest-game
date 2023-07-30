@@ -12,6 +12,11 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
+function Play () {
+    sprites.destroy(textSprite, effects.disintegrate, 200)
+    blockMenu.closeMenu()
+    blockMenu.setControlsEnabled(false)
+}
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Level_Editor_) {
         if (!(tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile`) || tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile0`))) {
@@ -183,6 +188,10 @@ function Call_Menu () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Cursor)
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
     textSprite = textsprite.create("Platformer 2")
+    textSprite.startEffect(effects.warmRadial)
+    timer.after(1200, function () {
+        textSprite.startEffect(effects.coolRadial)
+    })
     textSprite.setPosition(51, 18)
     textSprite.setMaxFontHeight(7)
     blockMenu.showMenu([
@@ -437,6 +446,8 @@ blockMenu.onMenuOptionSelected(function (option, index) {
             `)
         game.showLongText("Level Editor Controls: w, a, s and  d to move. spacebar to place walls and enter to place spikes. press a and d at the same time to play the level.", DialogLayout.Full)
         blockMenu.setControlsEnabled(true)
+    } else if (option == "Play") {
+        Play()
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
@@ -474,9 +485,9 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
     }
 })
 let settings2 = false
-let textSprite: TextSprite = null
 let Level_Editor_Cursor: Sprite = null
 let Level_Editor_ = false
+let textSprite: TextSprite = null
 let mySprite: Sprite = null
 let Level_Editor_2 = false
 let Music_Speed = 0
