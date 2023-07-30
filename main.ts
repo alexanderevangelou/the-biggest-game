@@ -406,6 +406,37 @@ blockMenu.onMenuOptionSelected(function (option, index) {
         blockMenu.closeMenu()
         blockMenu.setControlsEnabled(false)
         Settings()
+    } else if (option == "Controls") {
+        blockMenu.setControlsEnabled(false)
+        game.setDialogTextColor(1)
+        game.setDialogFrame(img`
+            ..cc5cc55cc55cc55ccccc..
+            .cffc5ffc5ffc5ffc5ccffc.
+            5ffffc5ffc5ffc5ffc5ffff5
+            5ffffcc55cc55cc55ccffff5
+            5cffcffffffffffffffcffc5
+            cc5cffffffffffffffffcc5c
+            c5ccffffffffffffffffc5fc
+            5cf5ffffffffffffffff5ff5
+            5ff5ffffffffffffffff5fc5
+            cf5cffffffffffffffffcc5c
+            c5ccffffffffffffffffc5fc
+            5cf5ffffffffffffffff5ff5
+            5ff5ffffffffffffffff5fc5
+            cf5cffffffffffffffffcc5c
+            c5ccffffffffffffffffc5fc
+            5cf5ffffffffffffffff5ff5
+            5ff5ffffffffffffffff5fc5
+            cf5cffffffffffffffffcc5c
+            c5ccffffffffffffffffc5cc
+            5cffcffffffffffffffcffc5
+            5ffffcc55cc55cc55ccffff5
+            5ffff5cffccff5cff5cffff5
+            .5ffcc5cff5cff5cff5cff5.
+            ..555cc55cc55cc55cc555..
+            `)
+        game.showLongText("Level Editor Controls: w, a, s and  d to move. spacebar to place walls and enter to place spikes. press a and d at the same time to play the level.", DialogLayout.Full)
+        blockMenu.setControlsEnabled(true)
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
