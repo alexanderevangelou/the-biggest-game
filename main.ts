@@ -47,7 +47,9 @@ function Settings () {
     "Music Speed",
     "Quit Settings",
     "" + Music_Speed,
-    "Reset"
+    "Reset",
+    "Menu Theme",
+    "" + random
     ], MenuStyle.Grid, MenuLocation.BottomHalf)
     blockMenu.setColors(15, 1)
 }
@@ -180,7 +182,7 @@ function Call_Menu () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Cursor)
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
     textSprite = textsprite.create("Platformer 2")
-    textSprite.setPosition(68, 9)
+    textSprite.setPosition(51, 18)
     textSprite.setMaxFontHeight(7)
     blockMenu.showMenu([
     "Play",
@@ -194,9 +196,12 @@ function Call_Menu () {
     "PvP",
     "Quit"
     ], MenuStyle.Grid, MenuLocation.BottomHalf)
-    blockMenu.setColors(2, 15)
+    random = "Red"
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (Level_Editor_) {
+        Level_Editor_ = false
+    }
     Call_Menu()
 })
 function Level_Editor () {
@@ -383,8 +388,18 @@ blockMenu.onMenuOptionSelected(function (option, index) {
             blockMenu.closeMenu()
             blockMenu.setControlsEnabled(false)
             Settings()
-        } else {
-        	
+        }
+    } else if (option == "Menu Theme") {
+        if (random == "Red") {
+            random = "Blue"
+        } else if (random == "Blue") {
+            random = "Green"
+        } else if (random == "Green") {
+            random = "Yellow"
+        } else if (random == "Yellow") {
+            random = "Teal"
+        } else if (random == "Teal") {
+            random = "Red"
         }
     }
 })
@@ -422,6 +437,7 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
         }
     }
 })
+let random = ""
 let textSprite: TextSprite = null
 let Level_Editor_Cursor: Sprite = null
 let Level_Editor_ = false
@@ -436,5 +452,18 @@ forever(function () {
     }
     for (let index = 0; index < 2; index++) {
         music.play(music.stringPlayable("C G D B C5 E C5 F ", Music_Speed), music.PlaybackMode.UntilDone)
+    }
+})
+forever(function () {
+    if (random == "Red") {
+        blockMenu.setColors(2, 15)
+    } else if (random == "Blue") {
+        blockMenu.setColors(8, 15)
+    } else if (random == "Green") {
+        blockMenu.setColors(7, 15)
+    } else if (random == "Yellow") {
+        blockMenu.setColors(5, 15)
+    } else if (random == "Teal") {
+        blockMenu.setColors(6, 15)
     }
 })
