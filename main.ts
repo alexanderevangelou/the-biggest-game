@@ -37,7 +37,22 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
+function Settings () {
+    blockMenu.setControlsEnabled(true)
+    blockMenu.closeMenu()
+    textSprite = textsprite.create("SETTINGS")
+    textSprite.setPosition(31, 29)
+    textSprite.setMaxFontHeight(10)
+    blockMenu.showMenu([
+    "Music Speed",
+    "Quit Settings",
+    "" + Music_Speed,
+    "Reset"
+    ], MenuStyle.Grid, MenuLocation.BottomHalf)
+    blockMenu.setColors(15, 1)
+}
 function Call_Menu () {
+    blockMenu.setControlsEnabled(true)
     scene.setBackgroundImage(img`
         ................................................................................................................................................................
         ................................................................................................................................................................
@@ -186,6 +201,7 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function Level_Editor () {
     if (!(Level_Editor_) && !(Level_Editor_2) || (!(Level_Editor_) || !(Level_Editor_2))) {
+        blockMenu.setControlsEnabled(false)
         blockMenu.closeMenu()
         sprites.destroy(textSprite)
         Level_Editor_ = true
@@ -341,6 +357,7 @@ blockMenu.onMenuOptionSelected(function (option, index) {
     if (option == "Level Editor") {
         Level_Editor()
     } else if (option == "Quit") {
+        blockMenu.setControlsEnabled(false)
         blockMenu.closeMenu()
         sprites.destroy(textSprite)
     } else if (option == "Credits") {
@@ -348,6 +365,27 @@ blockMenu.onMenuOptionSelected(function (option, index) {
         blockMenu.closeMenu()
         // If editing add name here
         game.showLongText("Alex: Programer, Game tester and bug fixer", DialogLayout.Center)
+    } else if (option == "Settings") {
+        sprites.destroy(textSprite)
+        Settings()
+    } else if (option == "Quit Settings") {
+        blockMenu.closeMenu()
+        blockMenu.setControlsEnabled(false)
+        Call_Menu()
+    } else if (option == "Music Speed") {
+        Music_Speed += 10
+        blockMenu.closeMenu()
+        blockMenu.setControlsEnabled(false)
+        Settings()
+    } else if (option == "Reset") {
+        if (game.ask("You sure you want to reset", "settings?")) {
+            Music_Speed = 120
+            blockMenu.closeMenu()
+            blockMenu.setControlsEnabled(false)
+            Settings()
+        } else {
+        	
+        }
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
@@ -389,7 +427,8 @@ let Level_Editor_Cursor: Sprite = null
 let Level_Editor_ = false
 let mySprite: Sprite = null
 let Level_Editor_2 = false
-let Music_Speed = 120
+let Music_Speed = 0
+Music_Speed = 120
 Call_Menu()
 forever(function () {
     for (let index = 0; index < 2; index++) {
