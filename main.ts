@@ -20,6 +20,9 @@ function Levels () {
     } else if (level == 3) {
         tiles.setCurrentTilemap(tilemap`level13`)
         tiles.placeOnRandomTile(mySprite, assets.tile`myTile4`)
+    } else if (level == 4) {
+        tiles.setCurrentTilemap(tilemap`level14`)
+        tiles.placeOnRandomTile(mySprite, assets.tile`myTile4`)
     }
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -616,6 +619,13 @@ controller.player2.onButtonEvent(ControllerButton.Left, ControllerButtonEvent.Pr
     if (pvp) {
         P2_Direction = -1
     }
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile10`, function (sprite, location) {
+    game.showLongText("You found easter egg 1", DialogLayout.Bottom)
+    tiles.setTileAt(location, assets.tile`transparency16`)
+    music.play(music.melodyPlayable(music.powerUp), music.PlaybackMode.UntilDone)
+    info.changeScoreBy(20)
+    mySprite.sayText("Well that was lucky", 2000, false)
 })
 info.player2.onLifeZero(function () {
     game.showLongText("player 1 won", DialogLayout.Bottom)
