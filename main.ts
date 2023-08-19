@@ -1151,6 +1151,16 @@ blockMenu.onMenuOptionSelected(function (option, index) {
         } else if (random == "Yellow") {
             random = "Teal"
         } else if (random == "Teal") {
+            random = "Light Blue"
+        } else if (random == "Light Blue") {
+            random = "Purple"
+        } else if (random == "Purple") {
+            random = "Pink"
+        } else if (random == "Pink") {
+            random = "Orange"
+        } else if (random == "Orange") {
+            random = "White"
+        } else if (random == "White") {
             random = "Red"
         }
         blockMenu.closeMenu()
@@ -1394,6 +1404,16 @@ forever(function () {
             blockMenu.setColors(5, 15)
         } else if (random == "Teal") {
             blockMenu.setColors(6, 15)
+        } else if (random == "Light Blue") {
+            blockMenu.setColors(9, 15)
+        } else if (random == "Purple") {
+            blockMenu.setColors(10, 15)
+        } else if (random == "Pink") {
+            blockMenu.setColors(3, 15)
+        } else if (random == "Orange") {
+            blockMenu.setColors(4, 15)
+        } else if (random == "White") {
+            blockMenu.setColors(1, 15)
         }
     }
 })
