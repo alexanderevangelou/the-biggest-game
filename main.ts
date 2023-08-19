@@ -653,6 +653,18 @@ controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pres
         sprite2.vy = -150
     }
 })
+function Shop () {
+    sprites.destroy(textSprite, effects.disintegrate, 100)
+    textSprite2 = textsprite.create("SHOP", 15, 7)
+    textSprite2.setPosition(52, 24)
+    blockMenu.closeMenu()
+    blockMenu.showMenu([
+    "$25",
+    "Machine Gun",
+    "50$",
+    "Double jump"
+    ], MenuStyle.Grid, MenuLocation.BottomHalf)
+}
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (pvp) {
         P1_Direction = 1
@@ -1203,6 +1215,8 @@ blockMenu.onMenuOptionSelected(function (option, index) {
         PvP()
     } else if (option == "Play") {
         Play()
+    } else if (option == "Shop") {
+        Shop()
     }
 })
 function PvP () {
@@ -1360,6 +1374,7 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
 })
 let settings2 = false
 let projectile: Sprite = null
+let textSprite2: TextSprite = null
 let random2 = 0
 let vx = 0
 let random22 = 0
