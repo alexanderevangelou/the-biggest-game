@@ -655,13 +655,14 @@ controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pres
 })
 function Shop () {
     sprites.destroy(textSprite, effects.disintegrate, 100)
-    textSprite2 = textsprite.create("SHOP", 15, 7)
+    textSprite2 = textsprite.create("SHOP", 15, 5)
+    Size = true
     textSprite2.setPosition(52, 24)
     blockMenu.closeMenu()
     blockMenu.showMenu([
     "$25",
     "Machine Gun",
-    "50$",
+    "$50",
     "Double jump"
     ], MenuStyle.Grid, MenuLocation.BottomHalf)
 }
@@ -1374,6 +1375,7 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
 })
 let settings2 = false
 let projectile: Sprite = null
+let Size = false
 let textSprite2: TextSprite = null
 let random2 = 0
 let vx = 0
@@ -1430,5 +1432,17 @@ forever(function () {
         } else if (random == "White") {
             blockMenu.setColors(1, 15)
         }
+    }
+})
+forever(function () {
+    if (Size) {
+        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
+        Size = false
+    } else if (!(Size)) {
+    	
     }
 })
