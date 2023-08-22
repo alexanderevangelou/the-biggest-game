@@ -297,7 +297,9 @@ function Play () {
     blockMenu.setControlsEnabled(false)
     playing = true
     level = 0
-    game.showLongText("Before you play just a reminder that spikes kill you", DialogLayout.Bottom)
+    timer.after(1000, function () {
+        game.showLongText("Before you play just a reminder that spikes kill you", DialogLayout.Bottom)
+    })
     sprites.destroy(textSprite)
     scene.setBackgroundImage(img`
         6666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666
@@ -1225,6 +1227,10 @@ blockMenu.onMenuOptionSelected(function (option, index) {
     } else if (option == "PvP") {
         PvP()
     } else if (option == "Play") {
+        color.FadeToWhite.startScreenEffect(1000)
+        timer.after(1000, function () {
+            color.FadeToBlack.startScreenEffect(1000)
+        })
         Play()
     } else if (option == "Shop") {
         Shop2()
