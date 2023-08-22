@@ -487,6 +487,22 @@ function Create_My_sprite () {
     mySprite.setFlag(SpriteFlag.GhostThroughWalls, false)
     mySprite.ay = 250
 }
+function Shop2 () {
+    sprites.destroy(textSprite, effects.disintegrate, 100)
+    textSprite2 = textsprite.create("SHOP", 12, 5)
+    textSprite.setMaxFontHeight(10)
+    textSprite2.setPosition(52, 24)
+    Shop = true
+    blockMenu.setColors(5, 12)
+    blockMenu.closeMenu()
+    blockMenu.showMenu([
+    "$25",
+    "Machine Gun",
+    "$50",
+    "Double jump",
+    "Quit shop"
+    ], MenuStyle.Grid, MenuLocation.BottomHalf)
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Level_Editor_) {
         if (!(tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile`) || tiles.tileAtLocationEquals(tiles.locationOfSprite(Level_Editor_Cursor), assets.tile`myTile0`))) {
@@ -653,19 +669,6 @@ controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pres
         sprite2.vy = -150
     }
 })
-function Shop () {
-    sprites.destroy(textSprite, effects.disintegrate, 100)
-    textSprite2 = textsprite.create("SHOP", 15, 5)
-    Size = true
-    textSprite2.setPosition(52, 24)
-    blockMenu.closeMenu()
-    blockMenu.showMenu([
-    "$25",
-    "Machine Gun",
-    "$50",
-    "Double jump"
-    ], MenuStyle.Grid, MenuLocation.BottomHalf)
-}
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (pvp) {
         P1_Direction = 1
@@ -733,11 +736,18 @@ function Call_Menu () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
     textSprite = textsprite.create("Platformer 2")
     textSprite.startEffect(effects.warmRadial)
-    timer.after(1200, function () {
+    timer.after(1500, function () {
+        textSprite.startEffect(effects.warmRadial)
+    })
+    timer.after(750, function () {
+        textSprite.startEffect(effects.coolRadial)
+    })
+    timer.after(2500, function () {
         textSprite.startEffect(effects.coolRadial)
     })
     textSprite.setPosition(51, 18)
     textSprite.setMaxFontHeight(7)
+    Shop = false
     blockMenu.showMenu([
     "Play",
     "Level Editor",
@@ -1217,7 +1227,11 @@ blockMenu.onMenuOptionSelected(function (option, index) {
     } else if (option == "Play") {
         Play()
     } else if (option == "Shop") {
-        Shop()
+        Shop2()
+    } else if (option == "Quit shop") {
+        Call_Menu()
+    } else if (option == "Machine Gun") {
+    	
     }
 })
 function PvP () {
@@ -1375,8 +1389,6 @@ controller.left.onEvent(ControllerButtonEvent.Repeated, function () {
 })
 let settings2 = false
 let projectile: Sprite = null
-let Size = false
-let textSprite2: TextSprite = null
 let random2 = 0
 let vx = 0
 let random22 = 0
@@ -1384,6 +1396,8 @@ let able_to_die = false
 let P1_Direction = 0
 let projectile2: Sprite = null
 let P2_Direction = 0
+let Shop = false
+let textSprite2: TextSprite = null
 let Level_Editor_Cursor: Sprite = null
 let Level_Editor_ = false
 let sprite2: Sprite = null
@@ -1410,7 +1424,7 @@ forever(function () {
     }
 })
 forever(function () {
-    if (!(settings2)) {
+    if (!(settings2 || Shop)) {
         if (random == "Red") {
             blockMenu.setColors(2, 15)
         } else if (random == "Blue") {
@@ -1432,17 +1446,5 @@ forever(function () {
         } else if (random == "White") {
             blockMenu.setColors(1, 15)
         }
-    }
-})
-forever(function () {
-    if (Size) {
-        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        scaling.scaleByPercent(textSprite2, 1, ScaleDirection.Uniformly, ScaleAnchor.Middle)
-        Size = false
-    } else if (!(Size)) {
-    	
     }
 })
