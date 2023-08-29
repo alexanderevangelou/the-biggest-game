@@ -426,7 +426,7 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Level_Editor_2 || pvp || playing) {
         if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
             mySprite.vy = -150
-            music.play(music.createSoundEffect(WaveShape.Sawtooth, 2695, 0, 255, 0, 500, SoundExpressionEffect.None, InterpolationCurve.Linear), music.PlaybackMode.UntilDone)
+            music.play(music.createSoundEffect(WaveShape.Sawtooth, 2695, 0, 255, 0, 500, SoundExpressionEffect.Warble, InterpolationCurve.Logarithmic), music.PlaybackMode.UntilDone)
         }
     }
 })
@@ -879,47 +879,49 @@ controller.player2.onButtonEvent(ControllerButton.Right, ControllerButtonEvent.P
     }
 })
 controller.down.onEvent(ControllerButtonEvent.Repeated, function () {
-    if (pvp || playing) {
-        if (P1_Direction == -1) {
-            projectile = sprites.createProjectileFromSprite(img`
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                5 5 . . . . . . . . . . . . . . 
-                5 5 . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `, mySprite, -200, 0)
-            projectile.setKind(SpriteKind.Projectile)
-        } else if (P1_Direction == 1) {
-            projectile = sprites.createProjectileFromSprite(img`
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . 5 5 
-                . . . . . . . . . . . . . . 5 5 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                . . . . . . . . . . . . . . . . 
-                `, mySprite, 200, 0)
-            projectile.setKind(SpriteKind.Projectile)
+    if (Machine_gun_control) {
+        if (pvp || playing) {
+            if (P1_Direction == -1) {
+                projectile = sprites.createProjectileFromSprite(img`
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    5 5 . . . . . . . . . . . . . . 
+                    5 5 . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    `, mySprite, -200, 0)
+                projectile.setKind(SpriteKind.Projectile)
+            } else if (P1_Direction == 1) {
+                projectile = sprites.createProjectileFromSprite(img`
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . 5 5 
+                    . . . . . . . . . . . . . . 5 5 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    . . . . . . . . . . . . . . . . 
+                    `, mySprite, 200, 0)
+                projectile.setKind(SpriteKind.Projectile)
+            }
         }
     }
 })
@@ -1478,9 +1480,9 @@ blockMenu.onMenuOptionSelected(function (option, index) {
     } else if (option == "Quit shop") {
         Call_Menu()
     } else if (option == "Machine Gun") {
-        if (info.score() == 50) {
+        if (info.score() >= 0) {
             Machine_gun_control = true
-            info.changeScoreBy(-10)
+            info.changeScoreBy(-110)
         }
     }
 })
