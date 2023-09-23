@@ -4,115 +4,120 @@ namespace SpriteKind {
     export const Player2 = SpriteKind.create()
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
-    game.setDialogCursor(img`
-        . . . . . 1 1 1 1 1 1 1 . . . . 
-        . . . . . 1 1 1 1 1 1 1 1 . . . 
-        . . . . . 1 1 . . . . 1 1 1 . . 
-        . . . . . 1 1 . . . . . 1 1 1 . 
-        1 1 . 1 . 1 1 . 1 . . . . 1 1 . 
-        1 1 . 1 1 1 1 1 1 . . . . 1 1 . 
-        1 1 . . 1 1 1 1 . . . . . 1 1 . 
-        1 1 . . . 1 1 . . . . . . 1 1 . 
-        1 1 . . . . . . . . . . . 1 1 . 
-        1 1 . . . . . . . . . . . 1 1 . 
-        1 1 . . . . . . . . . . . 1 1 . 
-        1 1 1 . . . . . . . . . 1 1 1 . 
-        . 1 1 1 . . . . . . . 1 1 1 . . 
-        . . 1 1 1 1 1 1 1 1 1 1 1 . . . 
-        . . . 1 1 1 1 1 1 1 1 1 . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)
-    game.setDialogFrame(img`
-        8888.....88....888....88.88....888....888...8888
-        867788..8768..86768..8678768..86768..8678.887768
-        8767768.8777886767688777877788676768877788677678
-        877677686767787767787767676778776778776786776778
-        .8778766677678776778767767767877677876778678778.
-        .8677866867668676768667686766867676866766687768.
-        ..86668688676886868867688867688686886768686668..
-        .888666888888888888888888888888888888888866688..
-        87777688666666666666666666666666666666668886688.
-        867677686666666666666666666666666666666688677778
-        .87766786666666666666666666666666666666686776768
-        ..877668666666666666666666666666666666668766778.
-        ..88888866666666666666666666666666666666866778..
-        .867768866666666666666666666666666666666888888..
-        86777768666666666666666666666666666666668867768.
-        876666886666666666666666666666666666666686777768
-        867777686666666666666666666666666666666688666678
-        .86776886666666666666666666666666666666686777768
-        ..888888666666666666666666666666666666668867768.
-        ..87768866666666666666666666666666666666888888..
-        .877667866666666666666666666666666666666866778..
-        86767768666666666666666666666666666666668766778.
-        877776886666666666666666666666666666666686776768
-        .88668886666666666666666666666666666666688677778
-        87777688666666666666666666666666666666668886688.
-        867677686666666666666666666666666666666688677778
-        .87766786666666666666666666666666666666686776768
-        ..877668666666666666666666666666666666668766778.
-        ..88888866666666666666666666666666666666866778..
-        .867768866666666666666666666666666666666888888..
-        86777768666666666666666666666666666666668867768.
-        876666886666666666666666666666666666666686777768
-        867777686666666666666666666666666666666688666678
-        .86776886666666666666666666666666666666686777768
-        ..888888666666666666666666666666666666668867768.
-        ..87766866666666666666666666666666666666888888..
-        .877667866666666666666666666666666666666866778..
-        86767768666666666666666666666666666666668766778.
-        877776886666666666666666666666666666666686776768
-        .88668886666666666666666666666666666666688677778
-        ..886668888888888888888888888888888888888666888.
-        ..86668686768868688676888676886868867688686668..
-        .8677866676686767686676867668676768667686687768.
-        .8778768776787767787677677678776778767766678778.
-        877677687677877677877676767787767787767686776778
-        8767768877788676768877787778867676887778.8677678
-        867788.8768..86768..8678768..86768..8678..887768
-        8888...888....888....88.88....888....88.....8888
-        `)
-    game.showLongText("Well you lost", DialogLayout.Center)
-    if (game.ask("Restart?")) {
-        tiles.placeOnRandomTile(mySprite, assets.tile`myTile4`)
+    if (!(info.life() <= 0)) {
+        game.setDialogCursor(img`
+            . . . . . 1 1 1 1 1 1 1 . . . . 
+            . . . . . 1 1 1 1 1 1 1 1 . . . 
+            . . . . . 1 1 . . . . 1 1 1 . . 
+            . . . . . 1 1 . . . . . 1 1 1 . 
+            1 1 . 1 . 1 1 . 1 . . . . 1 1 . 
+            1 1 . 1 1 1 1 1 1 . . . . 1 1 . 
+            1 1 . . 1 1 1 1 . . . . . 1 1 . 
+            1 1 . . . 1 1 . . . . . . 1 1 . 
+            1 1 . . . . . . . . . . . 1 1 . 
+            1 1 . . . . . . . . . . . 1 1 . 
+            1 1 . . . . . . . . . . . 1 1 . 
+            1 1 1 . . . . . . . . . 1 1 1 . 
+            . 1 1 1 . . . . . . . 1 1 1 . . 
+            . . 1 1 1 1 1 1 1 1 1 1 1 . . . 
+            . . . 1 1 1 1 1 1 1 1 1 . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+        game.setDialogFrame(img`
+            8888.....88....888....88.88....888....888...8888
+            867788..8768..86768..8678768..86768..8678.887768
+            8767768.8777886767688777877788676768877788677678
+            877677686767787767787767676778776778776786776778
+            .8778766677678776778767767767877677876778678778.
+            .8677866867668676768667686766867676866766687768.
+            ..86668688676886868867688867688686886768686668..
+            .888666888888888888888888888888888888888866688..
+            87777688666666666666666666666666666666668886688.
+            867677686666666666666666666666666666666688677778
+            .87766786666666666666666666666666666666686776768
+            ..877668666666666666666666666666666666668766778.
+            ..88888866666666666666666666666666666666866778..
+            .867768866666666666666666666666666666666888888..
+            86777768666666666666666666666666666666668867768.
+            876666886666666666666666666666666666666686777768
+            867777686666666666666666666666666666666688666678
+            .86776886666666666666666666666666666666686777768
+            ..888888666666666666666666666666666666668867768.
+            ..87768866666666666666666666666666666666888888..
+            .877667866666666666666666666666666666666866778..
+            86767768666666666666666666666666666666668766778.
+            877776886666666666666666666666666666666686776768
+            .88668886666666666666666666666666666666688677778
+            87777688666666666666666666666666666666668886688.
+            867677686666666666666666666666666666666688677778
+            .87766786666666666666666666666666666666686776768
+            ..877668666666666666666666666666666666668766778.
+            ..88888866666666666666666666666666666666866778..
+            .867768866666666666666666666666666666666888888..
+            86777768666666666666666666666666666666668867768.
+            876666886666666666666666666666666666666686777768
+            867777686666666666666666666666666666666688666678
+            .86776886666666666666666666666666666666686777768
+            ..888888666666666666666666666666666666668867768.
+            ..87766866666666666666666666666666666666888888..
+            .877667866666666666666666666666666666666866778..
+            86767768666666666666666666666666666666668766778.
+            877776886666666666666666666666666666666686776768
+            .88668886666666666666666666666666666666688677778
+            ..886668888888888888888888888888888888888666888.
+            ..86668686768868688676888676886868867688686668..
+            .8677866676686767686676867668676768667686687768.
+            .8778768776787767787677677678776778767766678778.
+            877677687677877677877676767787767787767686776778
+            8767768877788676768877787778867676887778.8677678
+            867788.8768..86768..8678768..86768..8678..887768
+            8888...888....888....88.88....888....88.....8888
+            `)
+        game.showLongText("Well you lost 1 heart", DialogLayout.Center)
+        info.changeLifeBy(-1)
+        if (game.ask("Restart?")) {
+            tiles.placeOnRandomTile(mySprite, assets.tile`myTile4`)
+        } else {
+            Call_Menu()
+        }
+        game.setDialogCursor(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `)
+        game.setDialogFrame(img`
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . 
+            `)
     } else {
         Call_Menu()
     }
-    game.setDialogCursor(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        `)
-    game.setDialogFrame(img`
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . 
-        `)
 })
 function Levels () {
     if (level == 0) {
@@ -424,9 +429,14 @@ function Levels () {
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (Level_Editor_2 || pvp || playing) {
-        if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
+        if (!(Double_jump)) {
+            if (mySprite.isHittingTile(CollisionDirection.Bottom)) {
+                mySprite.vy = -150
+                play_sound()
+            }
+        } else {
             mySprite.vy = -150
-            music.play(music.createSoundEffect(WaveShape.Sawtooth, 2695, 0, 255, 0, 500, SoundExpressionEffect.Warble, InterpolationCurve.Logarithmic), music.PlaybackMode.UntilDone)
+            play_sound()
         }
     }
 })
@@ -440,6 +450,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, l
 function Play () {
     blockMenu.closeMenu()
     blockMenu.setControlsEnabled(false)
+    info.setLife(3)
     playing = true
     level = 0
     timer.after(1000, function () {
@@ -660,20 +671,36 @@ function Shop2 () {
     Shop = true
     blockMenu.setColors(5, 12)
     blockMenu.closeMenu()
-    if (!(Machine_gun_control)) {
+    if (!(Machine_gun_control) && !(Double_jump)) {
         blockMenu.showMenu([
-        "$110",
+        "$150",
         "Machine Gun",
-        "$110",
+        "$150",
         "Double jump",
+        "Quit shop"
+        ], MenuStyle.Grid, MenuLocation.BottomHalf)
+    } else if (Machine_gun_control && !(Double_jump)) {
+        blockMenu.showMenu([
+        "Sold out",
+        "",
+        "$150",
+        "Double jump",
+        "Quit shop"
+        ], MenuStyle.Grid, MenuLocation.BottomHalf)
+    } else if (!(Machine_gun_control) && Double_jump) {
+        blockMenu.showMenu([
+        "$150",
+        "Machine Gun",
+        "",
+        "Sold out",
         "Quit shop"
         ], MenuStyle.Grid, MenuLocation.BottomHalf)
     } else {
         blockMenu.showMenu([
+        "",
         "Sold out",
         "",
-        "$110",
-        "Double jump",
+        "Sold out",
         "Quit shop"
         ], MenuStyle.Grid, MenuLocation.BottomHalf)
     }
@@ -734,6 +761,9 @@ controller.player2.onButtonEvent(ControllerButton.Down, ControllerButtonEvent.Pr
         }
     }
 })
+function play_sound () {
+    music.play(music.createSoundEffect(WaveShape.Sawtooth, 2695, 0, 255, 0, 500, SoundExpressionEffect.Warble, InterpolationCurve.Logarithmic), music.PlaybackMode.UntilDone)
+}
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile12`, function (sprite, location) {
     if (playing) {
         info.changeScoreBy(10)
@@ -742,7 +772,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile12`, function (sprite, 
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (pvp) {
+    if (pvp || playing) {
         P1_Direction = -1
     }
 })
@@ -790,8 +820,9 @@ function Settings () {
     "" + Music_Speed,
     "Reset",
     "Menu Theme",
-    "",
-    "" + random
+    "Difficulty",
+    "" + random,
+    "" + Difficulty
     ], MenuStyle.Grid, MenuLocation.BottomHalf)
     blockMenu.setColors(15, 1)
 }
@@ -865,7 +896,7 @@ controller.player2.onButtonEvent(ControllerButton.Up, ControllerButtonEvent.Pres
     }
 })
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (pvp) {
+    if (pvp || playing) {
         P1_Direction = 1
     }
 })
@@ -973,6 +1004,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 function Call_Menu () {
     color.startFade(color.White, color.originalPalette, 1500)
     pvp = false
+    settings2 = false
+    playing = false
     blockMenu.setControlsEnabled(true)
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     sprites.destroyAllSpritesOfKind(SpriteKind.Cursor)
@@ -1480,10 +1513,30 @@ blockMenu.onMenuOptionSelected(function (option, index) {
     } else if (option == "Quit shop") {
         Call_Menu()
     } else if (option == "Machine Gun") {
-        if (info.score() >= 0) {
+        if (info.score() >= 150) {
             Machine_gun_control = true
-            info.changeScoreBy(-110)
+            info.changeScoreBy(-150)
         }
+    } else if (option == "Double jump") {
+        if (info.score() >= 150) {
+            info.changeScoreBy(-150)
+            Double_jump = true
+        }
+    } else if (option == "Difficulty") {
+        if (Difficulty == "Peaceful") {
+            Difficulty = "Easy"
+        } else if (Difficulty == "Easy") {
+            Difficulty = "Medium"
+        } else if (Difficulty == "Medium") {
+            Difficulty = "Hard"
+        } else if (Difficulty == "Hard") {
+            Difficulty = "Impossible"
+        } else if (Difficulty == "Impossible") {
+            Difficulty = "Peaceful"
+        }
+        blockMenu.closeMenu()
+        blockMenu.setControlsEnabled(false)
+        Settings()
     }
 })
 function PvP () {
@@ -1655,12 +1708,14 @@ let Level_Editor_Cursor: Sprite = null
 let Level_Editor_ = false
 let sprite2: Sprite = null
 let textSprite: TextSprite = null
+let Double_jump = false
 let playing = false
 let pvp = false
 let Level_Editor_2 = false
 let level = 0
 let mySprite: Sprite = null
 let Music_Speed = 0
+let Difficulty = ""
 let random = ""
 scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -1743,9 +1798,9 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88888888888888888888888888888888888888888888888888888888888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88888888888888888888888888888888888888888888888888888888888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88888888888888888888888888888888888888888888888888888888888fffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666ccc66666666666666666666666666666ccc66666888fffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666ccc66666666666666666666666666666ccc66666888fffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666ccc66666666666666666666666666666ccc66666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666666ffffffffffffffffffffffffffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666666ffffffffffffffffffffffffffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
@@ -1758,16 +1813,16 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866ccc66666ccc666fffff77777777fffffff777fffff6666ccc66888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866ccc66666ccc666fffff77777777fffffff777fffff6666ccc66888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666666fffff77777777fffffff777fffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666666ffffffffffffffffffffffffffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff888666666ccc6666666ffffffffffffffffffffffffffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff888666666ccc6666666ffffffffffffffffffffffffffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff888666666ccc6666666ffffffffffffffffffffffffffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666666ffffffffffffffffffffffffffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffff8886666666666666666ffffffffffffffffffffffffffff666666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
-    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666666666666666666666666666666666666666666666888fffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666661116611166111661116611166111661116666666888fffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666661116611166111661116611166111661116666666888fffffffffffffffffffffffffffffffffffffffffffffff
+    ffffffffffffffffffffffffffffffffffffffffffffffffffffff88866666666666661116611166111661116611166111661116666666888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88888888888888888888888888888888888888888888888888888888888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88888888888888888888888888888888888888888888888888888888888fffffffffffffffffffffffffffffffffffffffffffffff
     ffffffffffffffffffffffffffffffffffffffffffffffffffffff88888888888888888888888888888888888888888888888888888888888fffffffffffffffffffffffffffffffffffffffffffffff
@@ -1785,7 +1840,11 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
 random = "Red"
+Difficulty = "Peaceful"
 Music_Speed = 120
+timer.after(2500, function () {
+    color.startFade(color.originalPalette, color.Black, 1000)
+})
 timer.after(4000, function () {
     Call_Menu()
 })
