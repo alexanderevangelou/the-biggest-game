@@ -760,7 +760,15 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile6`, function (sprite, l
 function Play () {
     blockMenu.closeMenu()
     blockMenu.setControlsEnabled(false)
-    info.setLife(3)
+    if (Difficulty == "Peaceful") {
+        info.setLife(4)
+    } else if (Difficulty == "Medium" || Difficulty == "Easy") {
+        info.setLife(3)
+    } else if (Difficulty == "Hard") {
+        info.setLife(2)
+    } else if (Difficulty == "Impossible") {
+        info.setLife(1)
+    }
     playing = true
     level = 0
     timer.after(1000, function () {
