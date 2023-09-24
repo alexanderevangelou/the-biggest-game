@@ -1163,7 +1163,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.End, function (sprite, otherSpri
                 ..........................................
                 ..........................................
                 `)
-            game.showLongText("Achievement Unlocked", DialogLayout.Bottom)
+            game.showLongText("Achievement Unlocked:", DialogLayout.Bottom)
         })
     })
 })
