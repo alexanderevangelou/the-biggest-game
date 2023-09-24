@@ -81,41 +81,6 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, l
         } else {
             Call_Menu()
         }
-        game.setDialogCursor(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            `)
-        game.setDialogFrame(img`
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . 
-            `)
     } else {
         Call_Menu()
     }
@@ -128,23 +93,31 @@ function Levels () {
         tiles.setCurrentTilemap(tilemap`level8`)
         tiles.placeOnRandomTile(mySprite, assets.tile`myTile4`)
     } else if (level == 2) {
-        game.setDialogCursor(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
+        game.setDialogFrame(img`
+            ..bbabbaabbaabbaabbbbb..
+            .bddbaddbaddbaddbabbddb.
+            addddbaddbaddbaddbadddda
+            addddbbaabbaabbaabbdddda
+            abddb11111111111111bddba
+            bbab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111babb
+            abddb11111111111111bddba
+            addddbbaabbaabbaabbdddda
+            addddabddabddabddabdddda
+            .addbbabddabddabddabdda.
+            ..aaabbaabbaabbaabbaaa..
             `)
         game.showLongText("time to learn about buttons", DialogLayout.Bottom)
         tiles.setCurrentTilemap(tilemap`level11`)
@@ -156,23 +129,31 @@ function Levels () {
         tiles.setCurrentTilemap(tilemap`level14`)
         tiles.placeOnRandomTile(mySprite, assets.tile`myTile4`)
     } else if (level == 5) {
-        game.setDialogCursor(img`
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
-            . . . . . . . . . . . . . . . . 
+        game.setDialogFrame(img`
+            ..bbabbaabbaabbaabbbbb..
+            .bddbaddbaddbaddbabbddb.
+            addddbaddbaddbaddbadddda
+            addddbbaabbaabbaabbdddda
+            abddb11111111111111bddba
+            bbab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111babb
+            abddb11111111111111bddba
+            addddbbaabbaabbaabbdddda
+            addddabddabddabddabdddda
+            .addbbabddabddabddabdda.
+            ..aaabbaabbaabbaabbaaa..
             `)
         game.showLongText("The meteor of extinction is comming! run for your life!", DialogLayout.Bottom)
         tiles.setCurrentTilemap(tilemap`level15`)
@@ -676,8 +657,34 @@ function Levels () {
             `)
         tiles.setCurrentTilemap(tilemap`level25`)
         tiles.placeOnRandomTile(mySprite, assets.tile`myTile4`)
+        game.setDialogFrame(img`
+            ..bbabbaabbaabbaabbbbb..
+            .bddbaddbaddbaddbabbddb.
+            addddbaddbaddbaddbadddda
+            addddbbaabbaabbaabbdddda
+            abddb11111111111111bddba
+            bbab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111badb
+            abda1111111111111111adda
+            adda1111111111111111adba
+            bdab1111111111111111bbab
+            babb1111111111111111babb
+            abddb11111111111111bddba
+            addddbbaabbaabbaabbdddda
+            addddabddabddabddabdddda
+            .addbbabddabddabddabdda.
+            ..aaabbaabbaabbaabbaaa..
+            `)
         game.showLongText("A black hole just apeared out of nowhere!", DialogLayout.Center)
-        game.showLongText("What do we do!", DialogLayout.Center)
+        game.showLongText("What do we do!?", DialogLayout.Center)
         Black_hole = sprites.create(img`
             ................ccccccccccccc................
             .............ccceeeeeeeeeeeeeccc.............
@@ -728,8 +735,6 @@ function Levels () {
         Black_hole.setKind(SpriteKind.End)
         mySprite.follow(Black_hole)
         Black_hole.setPosition(74, 67)
-    } else {
-    	
     }
 }
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -1114,11 +1119,11 @@ info.onCountdownEnd(function () {
     game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.End, function (sprite, otherSprite) {
-    scene.cameraShake(4, 500)
     color.startFade(color.originalPalette, color.White, 2000)
+    sprites.destroy(Black_hole)
     timer.after(4000, function () {
-        sprites.destroy(Black_hole)
-        timer.after(1000, function () {
+        Call_Menu()
+        timer.after(4000, function () {
             game.setDialogFrame(img`
                 ...cc..............................cc.....
                 ..c55c..bbbb...bbbbb...bbbbb......c55c....
@@ -1164,6 +1169,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.End, function (sprite, otherSpri
                 ..........................................
                 `)
             game.showLongText("Achievement Unlocked:", DialogLayout.Bottom)
+            game.showLongText("The Black End", DialogLayout.Bottom)
         })
     })
 })
